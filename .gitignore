@@ -1,0 +1,14 @@
+# Xcode user-specific settings
+xcuserdata/
+*.xcuserstate
+
+# Local build output
+DerivedData/
+build/
+
+# macOS metadata
+.DS_Store
+
+# Local generated artwork and previews not used by the app target
+Generated Images/
+Generated Previews/

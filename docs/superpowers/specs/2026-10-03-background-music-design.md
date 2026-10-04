@@ -73,6 +73,6 @@ Simulator verification will confirm:
 - Backgrounding pauses playback and returning resumes from the saved position.
 - Screen changes do not restart the currently selected track.
 
-## Prerequisite
+## Deferred Audio Assets
 
-Implementation can begin after the three final audio files are selected and made available in the workspace. Their filenames and formats will be mapped to the stable logical track names during implementation.
+The music system can be implemented before the final songs are selected. Until the files are added, missing-resource handling keeps the app silent without crashing. The chosen filenames and formats will later be mapped to the stable logical track names, followed by final playback and fade verification with real audio.
