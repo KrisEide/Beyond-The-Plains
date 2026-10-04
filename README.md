@@ -1,14 +1,14 @@
 # Beyond the Plains
 
-Beyond the Plains is an iOS game inspired by *The Oregon Trail*. The player prepares for a journey west across the United States in the 1800s, chooses a group of travelers, buys supplies, and makes decisions that affect the rest of the journey.
+Beyond the Plains er et iOS-spill inspirert av klassikeren *The Oregon Trail*. Spilleren forbereder seg på en reise vestover gjennom USA på 1800-tallet, velger hvem som skal være med, kjøper forsyninger og tar valg som påvirker resten av reisen.
 
-## Built with
+## Laget med
 
-- Swift and SwiftUI
-- Portrait and landscape layouts
-- Resource and party management
-- Choices with later consequences
-- Multiple possible endings
-- Graphics, sound, and adaptive music transitions
+- Swift og SwiftUI
+- Tilpasset grensesnitt for stående og liggende skjerm
+- Styring av reisefølge og ressurser
+- Valg som får konsekvenser senere i spillet
+- Flere mulige avslutninger
+- Grafikk, lyd og musikkoverganger
 
-This is a hobby and learning project created from start to finish as a complete iOS app.
+Dette er et hobby- og læringsprosjekt som er utviklet fra start til slutt som en komplett iOS-app.
