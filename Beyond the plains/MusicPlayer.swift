@@ -85,6 +85,7 @@ final class MusicPlayer {
     private var transitionState = MusicTransitionState()
     private var requestedTrack: MusicTrack = .song1
     private var isAppActive = true
+    private var isMuted = false
 
     init() {
         configureAudioSession()
@@ -93,11 +94,22 @@ final class MusicPlayer {
     func update(phase: GamePhase, day: Int) {
         requestedTrack = MusicTrack.track(for: phase, day: day)
 
-        guard isAppActive else {
+        guard isAppActive, !isMuted else {
             return
         }
 
         transition(to: requestedTrack)
+    }
+
+    func setMuted(_ muted: Bool) {
+        isMuted = muted
+        cancelTransitionTask()
+
+        if muted {
+            player?.pause()
+        } else if isAppActive {
+            transition(to: requestedTrack)
+        }
     }
 
     func pause() {
@@ -109,6 +121,11 @@ final class MusicPlayer {
     func resume(phase: GamePhase, day: Int) {
         isAppActive = true
         requestedTrack = MusicTrack.track(for: phase, day: day)
+
+        guard !isMuted else {
+            return
+        }
+
         transition(to: requestedTrack)
     }
 

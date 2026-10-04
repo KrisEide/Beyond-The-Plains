@@ -1,5 +1,34 @@
 import SwiftUI
 
+enum JourneyBackgroundName {
+    static func name(
+        day: Int,
+        isWinter: Bool,
+        isLandscape: Bool
+    ) -> String {
+        switch day {
+        case 10:
+            if isWinter {
+                return isLandscape
+                    ? "Month10WinterLandscape"
+                    : "Month10WinterPortrait"
+            }
+
+            return isLandscape ? "Month10Landscape" : "Month10Portrait"
+        case 11:
+            if isWinter {
+                return isLandscape
+                    ? "Month11WinterLandscape"
+                    : "Month11WinterPortrait"
+            }
+
+            return isLandscape ? "Month11Landscape" : "Month11Portrait"
+        default:
+            return ""
+        }
+    }
+}
+
 struct JourneyView: View {
     
     @EnvironmentObject var gameState: GameState
@@ -123,15 +152,7 @@ struct JourneyView: View {
                         
                         eventPanel(isLandscape: false)
                             .padding(.horizontal, 28)
-                            .padding(
-                                .bottom,
-                                journeyEvent(
-                                    for: gameState.currentDay,
-                                    gameState: gameState
-                                ).choices.count == 4
-                                ? 70
-                                : 24
-                            )
+                            .padding(.bottom, 24)
                     }
                     .frame(
                         width: geometry.size.width,
@@ -813,8 +834,13 @@ struct JourneyView: View {
         } else {
 
             Button {
-                Task {
-                    await runTravelTransition()
+                if gameState.livingTravelerIndices().isEmpty {
+                    showResult = false
+                    gameState.journeyEnding = .gameOver
+                } else {
+                    Task {
+                        await runTravelTransition()
+                    }
                 }
             } label: {
                 Text("Continue")
@@ -1602,11 +1628,12 @@ struct JourneyView: View {
         case 9:
             return isLandscape ? "Month9Landscape" : "Month9Portrait"
 
-        case 10:
-            return isLandscape ? "Month10Landscape" : "Month10Portrait"
-
-        case 11:
-            return isLandscape ? "Month11Landscape" : "Month11Portrait"
+        case 10, 11:
+            return JourneyBackgroundName.name(
+                day: gameState.currentDay,
+                isWinter: gameState.isWinter,
+                isLandscape: isLandscape
+            )
 
         case 12:
             return isLandscape ? "Month12Landscape" : "Month12Portrait"
@@ -1745,7 +1772,7 @@ struct JourneyView: View {
         //gameState.sickTraveler = 2
         gameState.medicalSupplies = 2
         
-        gameState.currentDay = 11
+        gameState.currentDay = 2
         gameState.sickTraveler = 2
         
         return JourneyView()

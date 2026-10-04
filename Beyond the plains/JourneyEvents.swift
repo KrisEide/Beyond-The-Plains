@@ -103,7 +103,7 @@ func journeyEvent(
     case 3:
         return JourneyEvent(
             title: "THE FERRY",
-            description: "A wide river blocks the trail ahead. An old ferry can carry the wagon across, but the ferryman wants payment. Farther upstream, the water looks shallow enough to attempt a crossing.",
+            description: "A wide river blocks the trail. The ferryman demands payment, but the water farther upstream may be shallow enough to cross.",
             choices: [
                 JourneyChoice(
                     number: 1,

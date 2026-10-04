@@ -27,7 +27,7 @@ func journeyEventDays6to14(
     case 7:
         return JourneyEvent(
             title: "WAGON CAMP",
-            description: "A group of travelers with several wagons has stopped beside the trail. Several cargo crates were damaged on the rough road, and the exhausted travelers are preparing to camp for the night.",
+            description: "A wagon camp has stopped beside the trail. Damaged cargo crates need repair, and the exhausted travelers are preparing for the night.",
             choices: [
                 JourneyChoice(number: 1, text: "Repair the Cargo Crates — Tools", requirement: .item(.tools)),
                 JourneyChoice(number: 2, text: "Stand Guard for the Night", requirement: .rifleAndAmmo(1)),
@@ -453,6 +453,10 @@ func resolveDay10Fight(
     }
 
     if let name = killRandomLivingTraveler(gameState: gameState, forcedTraveler: forcedTraveler) {
+        if gameState.livingTravelerCount == 0 {
+            return "The fight turns deadly. \(name) is shot and killed before the bandits retreat."
+        }
+
         return "The fight turns deadly. \(name) is shot and killed before the bandits retreat. You use 2 Ammo."
     }
 

@@ -6,13 +6,14 @@ struct MyApp: App {
 
     @StateObject private var gameState = GameState()
     @State private var musicPlayer = MusicPlayer()
+    @State private var isMusicMuted = false
 
     var body: some Scene {
         WindowGroup {
             Group {
                 switch gameState.phase {
                 case .start:
-                    StartView()
+                    StartView(isMusicMuted: $isMusicMuted)
 
                 case .partySetup:
                     PartySetupView()
@@ -33,6 +34,9 @@ struct MyApp: App {
                     phase: gameState.phase,
                     day: gameState.currentDay
                 )
+            }
+            .onChange(of: isMusicMuted) { _, isMuted in
+                musicPlayer.setMuted(isMuted)
             }
             .onChange(of: gameState.phase) { _, newPhase in
                 musicPlayer.update(

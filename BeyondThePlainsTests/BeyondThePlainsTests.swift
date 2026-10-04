@@ -32,3 +32,67 @@ struct MusicTrackSelectionTests {
         #expect(state.completeTransition(id: secondRequest.id) == .song3)
     }
 }
+
+struct JourneyBackgroundSelectionTests {
+    @Test func scenariosTenAndElevenKeepRegularBackgroundsBeforeWinter() {
+        #expect(
+            JourneyBackgroundName.name(
+                day: 10,
+                isWinter: false,
+                isLandscape: false
+            ) == "Month10Portrait"
+        )
+        #expect(
+            JourneyBackgroundName.name(
+                day: 10,
+                isWinter: false,
+                isLandscape: true
+            ) == "Month10Landscape"
+        )
+        #expect(
+            JourneyBackgroundName.name(
+                day: 11,
+                isWinter: false,
+                isLandscape: false
+            ) == "Month11Portrait"
+        )
+        #expect(
+            JourneyBackgroundName.name(
+                day: 11,
+                isWinter: false,
+                isLandscape: true
+            ) == "Month11Landscape"
+        )
+    }
+
+    @Test func scenariosTenAndElevenUseWinterBackgroundsDuringWinter() {
+        #expect(
+            JourneyBackgroundName.name(
+                day: 10,
+                isWinter: true,
+                isLandscape: false
+            ) == "Month10WinterPortrait"
+        )
+        #expect(
+            JourneyBackgroundName.name(
+                day: 10,
+                isWinter: true,
+                isLandscape: true
+            ) == "Month10WinterLandscape"
+        )
+        #expect(
+            JourneyBackgroundName.name(
+                day: 11,
+                isWinter: true,
+                isLandscape: false
+            ) == "Month11WinterPortrait"
+        )
+        #expect(
+            JourneyBackgroundName.name(
+                day: 11,
+                isWinter: true,
+                isLandscape: true
+            ) == "Month11WinterLandscape"
+        )
+    }
+}
