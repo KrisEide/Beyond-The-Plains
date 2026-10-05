@@ -1,6 +1,18 @@
 import SwiftUI
 
 enum JourneyBackgroundName {
+    static func banditFoodCost(availableFood: Int) -> Int {
+        if availableFood >= 13 {
+            return 4
+        }
+
+        if availableFood >= 10 {
+            return 3
+        }
+
+        return 2
+    }
+
     static func name(
         day: Int,
         isWinter: Bool,
@@ -23,6 +35,14 @@ enum JourneyBackgroundName {
             }
 
             return isLandscape ? "Month11Landscape" : "Month11Portrait"
+        case 12:
+            if isWinter {
+                return isLandscape
+                    ? "Month12WinterLandscape"
+                    : "Month12WinterPortrait"
+            }
+
+            return isLandscape ? "Month12Landscape" : "Month12Portrait"
         default:
             return ""
         }
@@ -699,6 +719,10 @@ struct JourneyView: View {
                         weight: .bold,
                         design: .serif
                     ))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                    .allowsTightening(true)
+                    .fixedSize(horizontal: false, vertical: true)
                 
                 Rectangle()
                     .fill(
@@ -1628,15 +1652,12 @@ struct JourneyView: View {
         case 9:
             return isLandscape ? "Month9Landscape" : "Month9Portrait"
 
-        case 10, 11:
+        case 10, 11, 12:
             return JourneyBackgroundName.name(
                 day: gameState.currentDay,
                 isWinter: gameState.isWinter,
                 isLandscape: isLandscape
             )
-
-        case 12:
-            return isLandscape ? "Month12Landscape" : "Month12Portrait"
 
         case 13:
             return isLandscape ? "Month13Landscape" : "Month13Portrait"
@@ -1683,8 +1704,9 @@ struct JourneyView: View {
                     weight: .bold,
                     design: .serif
                 ))
-                .lineLimit(1)
+                .lineLimit(2)
                 .minimumScaleFactor(0.8)
+                .fixedSize(horizontal: false, vertical: true)
             
             Spacer()
             
@@ -1703,7 +1725,8 @@ struct JourneyView: View {
             )
         )
         .padding(.horizontal, isLandscape ? 10 : 12)
-        .frame(height: isLandscape ? 40 : 48)
+        .padding(.vertical, isLandscape ? 7 : 9)
+        .frame(minHeight: isLandscape ? 40 : 48)
         .background(
             Color.white.opacity(0.28)
         )
@@ -1772,7 +1795,7 @@ struct JourneyView: View {
         //gameState.sickTraveler = 2
         gameState.medicalSupplies = 2
         
-        gameState.currentDay = 2
+        gameState.currentDay = 13
         gameState.sickTraveler = 2
         
         return JourneyView()

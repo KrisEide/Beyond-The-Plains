@@ -33,6 +33,15 @@ struct MusicTrackSelectionTests {
     }
 }
 
+struct BanditSupplyCostTests {
+    @Test func foodCostIncreasesAtTenAndThirteenFood() {
+        #expect(JourneyBackgroundName.banditFoodCost(availableFood: 9) == 2)
+        #expect(JourneyBackgroundName.banditFoodCost(availableFood: 10) == 3)
+        #expect(JourneyBackgroundName.banditFoodCost(availableFood: 12) == 3)
+        #expect(JourneyBackgroundName.banditFoodCost(availableFood: 13) == 4)
+    }
+}
+
 struct JourneyBackgroundSelectionTests {
     @Test func scenariosTenAndElevenKeepRegularBackgroundsBeforeWinter() {
         #expect(
@@ -62,6 +71,40 @@ struct JourneyBackgroundSelectionTests {
                 isWinter: false,
                 isLandscape: true
             ) == "Month11Landscape"
+        )
+    }
+
+    @Test func scenarioTwelveKeepsItsRegularBackgroundBeforeWinter() {
+        #expect(
+            JourneyBackgroundName.name(
+                day: 12,
+                isWinter: false,
+                isLandscape: false
+            ) == "Month12Portrait"
+        )
+        #expect(
+            JourneyBackgroundName.name(
+                day: 12,
+                isWinter: false,
+                isLandscape: true
+            ) == "Month12Landscape"
+        )
+    }
+
+    @Test func scenarioTwelveUsesItsWinterBackgroundDuringWinter() {
+        #expect(
+            JourneyBackgroundName.name(
+                day: 12,
+                isWinter: true,
+                isLandscape: false
+            ) == "Month12WinterPortrait"
+        )
+        #expect(
+            JourneyBackgroundName.name(
+                day: 12,
+                isWinter: true,
+                isLandscape: true
+            ) == "Month12WinterLandscape"
         )
     }
 

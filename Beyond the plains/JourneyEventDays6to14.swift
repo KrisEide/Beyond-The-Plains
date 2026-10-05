@@ -85,12 +85,14 @@ func journeyEventDays6to14(
             detourText = "Take the Badlands Detour — +\(detourWeeks) \(detourWeeks == 1 ? "Week" : "Weeks")"
         }
 
+        let demandedFood = JourneyBackgroundName.banditFoodCost(availableFood: gameState.food)
+
         return JourneyEvent(
             title: "BANDITS ON THE TRAIL",
             description: "Several armed bandits block the trail and demand payment before they will let the wagon pass.",
             choices: [
                 JourneyChoice(number: 1, text: "Pay Them — $100", requirement: .money(100)),
-                JourneyChoice(number: 2, text: "Give Supplies", requirement: .foodAndAmmo(food: 2, ammo: 1)),
+                JourneyChoice(number: 2, text: "Give Supplies", requirement: .foodAndAmmo(food: demandedFood, ammo: 1)),
                 JourneyChoice(number: 3, text: "Fight!", requirement: .rifleAndAmmo(2)),
                 JourneyChoice(
                     number: 4,
@@ -127,7 +129,7 @@ func journeyEventDays6to14(
                 JourneyChoice(number: 1, text: "Lower the Rope", requirement: .item(.rope)),
                 JourneyChoice(number: 2, text: "Find a Safer Way Down", requirement: .none, extraWeeks: 1),
                 JourneyChoice(number: 3, text: "Climb Down Without Equipment", requirement: .none),
-                JourneyChoice(number: 4, text: "Leave Them Behind", requirement: .none)
+                JourneyChoice(number: 4, text: "Leave \(fallenTravelerName) Behind", requirement: .none)
             ]
         )
 
@@ -260,9 +262,10 @@ func resolveJourneyChoiceDays6to14(
             gameState.money = max(0, gameState.money - 100)
             return "You pay the bandits $100. They count the money and let the wagon pass."
         case 2:
-            gameState.food = max(0, gameState.food - 2)
+            let demandedFood = JourneyBackgroundName.banditFoodCost(availableFood: gameState.food)
+            gameState.food = max(0, gameState.food - demandedFood)
             gameState.ammunition = max(0, gameState.ammunition - 1)
-            return "You hand over 2 Food and 1 Ammo. The bandits take the supplies and clear the road."
+            return "You hand over \(demandedFood) Food and 1 Ammo. The bandits take the supplies and clear the road."
         case 3:
             return resolveDay10Fight(gameState: gameState, roll: Int.random(in: 1...100))
         case 4:

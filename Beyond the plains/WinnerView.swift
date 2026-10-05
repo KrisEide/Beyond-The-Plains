@@ -42,7 +42,10 @@ struct WinnerView: View {
                         .choiceButtonStyle()
                 }
                 .padding(.horizontal, 24)
-                .padding(.bottom, max(24, geometry.safeAreaInsets.bottom))
+                .padding(
+                    .bottom,
+                    max(70, geometry.safeAreaInsets.bottom + 36)
+                )
             }
             .frame(
                 width: geometry.size.width,
@@ -59,11 +62,15 @@ private struct WinnerMessage: View {
     var body: some View {
         VStack(spacing: 10) {
             Text(ending.title)
-                .font(.system(.largeTitle, design: .serif, weight: .bold))
+                .font(.system(size: 30, weight: .bold, design: .serif))
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
 
             Text(ending.message)
-                .font(.system(.body, design: .serif, weight: .medium))
-                .lineSpacing(4)
+                .font(.system(size: 15, weight: .medium, design: .serif))
+                .lineSpacing(3)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: 300)
         }
         .multilineTextAlignment(.center)
         .foregroundStyle(.white)
