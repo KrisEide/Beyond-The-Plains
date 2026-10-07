@@ -20,13 +20,16 @@ Dette er et hobby- og læringsprosjekt som er utviklet fra start til slutt som e
 ## Bilder
 
 <p align="center">
-  <img src="Media/Bilde1.png" width="30%" alt="Skjermbilde 1">
-  <img src="Media/Bilde2.png" width="30%" alt="Skjermbilde 2">
-  <img src="Media/Bilde3.png" width="30%" alt="Skjermbilde 3">
+  <img src="Media/Bilde1.png" width="30%" alt="Startskjerm">
+  <img src="Media/Bilde2.png" width="30%" alt="Reise">
+  <img src="Media/Bilde3.png" width="30%" alt="Vinter">
 </p>
 
 <p align="center">
-  <img src="Media/Bilde4.png" width="30%" alt="Skjermbilde 4">
-  <img src="Media/Bilde5.png" width="30%" alt="Skjermbilde 5">
-  <img src="Media/Bilde6.png" width="30%" alt="Skjermbilde 6">
+  <img src="Media/Bilde4.png" width="45%" alt="Butikk">
+  <img src="Media/Bilde5.png" width="45%" alt="Hendelse">
+</p>
+
+<p align="center">
+  <img src="Media/Bilde6.png" width="30%" alt="Sluttskjerm">
 </p>
