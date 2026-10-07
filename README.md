@@ -15,18 +15,18 @@ Dette er et hobby- og læringsprosjekt som er utviklet fra start til slutt som e
 
 ## Demo
 
-[▶ Se gameplay-videoen](Media/SmallDemo2BeyonThePlains.mov)
+[▶ Se gameplay-videoen](Media/SmallDemo3BeyonThePlains.mov)
 
 ## Bilder
 
-![Skjermbilde 1](Media/Bilde1.png)
+<p align="center">
+  <img src="Media/Bilde1.png" width="30%" alt="Skjermbilde 1">
+  <img src="Media/Bilde2.png" width="30%" alt="Skjermbilde 2">
+  <img src="Media/Bilde3.png" width="30%" alt="Skjermbilde 3">
+</p>
 
-![Skjermbilde 2](Media/Bilde2.png)
-
-![Skjermbilde 3](Media/Bilde3.png)
-
-![Skjermbilde 4](Media/Bilde4.png)
-
-![Skjermbilde 5](Media/Bilde5.png)
-
-![Skjermbilde 6](Media/Bilde6.png)
+<p align="center">
+  <img src="Media/Bilde4.png" width="30%" alt="Skjermbilde 4">
+  <img src="Media/Bilde5.png" width="30%" alt="Skjermbilde 5">
+  <img src="Media/Bilde6.png" width="30%" alt="Skjermbilde 6">
+</p>
