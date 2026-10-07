@@ -8,6 +8,11 @@ enum SicknessOutcome {
     case died(name: String)
 }
 
+enum SicknessAttemptOutcome: Equatable {
+    case becameSick(Int)
+    case preventedByBlanket
+}
+
 enum GamePhase: Equatable {
     case start
     case shop
@@ -473,7 +478,7 @@ class GameState: ObservableObject {
         return baseChance
     }
     
-    func tryRandomSickness(on day: Int) -> Int? {
+    func tryRandomSickness(on day: Int) -> SicknessAttemptOutcome? {
 
         guard sickTraveler == nil else {
             return nil
@@ -503,6 +508,11 @@ class GameState: ObservableObject {
             return nil
         }
 
+        if isWinter && blankets > 0 {
+            blankets -= 1
+            return .preventedByBlanket
+        }
+
         guard let randomTraveler =
             livingTravelers.randomElement() else {
             return nil
@@ -510,7 +520,7 @@ class GameState: ObservableObject {
 
         makeTravelerSick(randomTraveler)
 
-        return randomTraveler
+        return .becameSick(randomTraveler)
     }
     
     var livingTravelerCount: Int {

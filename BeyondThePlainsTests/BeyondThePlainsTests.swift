@@ -33,6 +33,20 @@ struct MusicTrackSelectionTests {
     }
 }
 
+struct WinterBlanketSicknessTests {
+    @Test func blanketPreventsGuaranteedWinterSickness() {
+        let gameState = GameState()
+        gameState.weeksPassed = gameState.winterStartAtWeek
+        gameState.blankets = 1
+
+        let outcome = gameState.tryRandomSickness(on: 8)
+
+        #expect(outcome == .preventedByBlanket)
+        #expect(gameState.blankets == 0)
+        #expect(gameState.sickTraveler == nil)
+    }
+}
+
 struct BanditSupplyCostTests {
     @Test func foodCostIncreasesAtTenAndThirteenFood() {
         #expect(JourneyBackgroundName.banditFoodCost(availableFood: 9) == 2)

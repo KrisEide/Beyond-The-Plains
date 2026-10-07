@@ -1420,11 +1420,16 @@ struct JourneyView: View {
                 !sicknessResolved &&
                 starvedTraveler == nil {
 
-                if let index = gameState.tryRandomSickness(
+                if let outcome = gameState.tryRandomSickness(
                     on: gameState.currentDay
                 ) {
-                    let name = gameState.travelerName(for: index)
-                    messages.append("\(name) has fallen sick.")
+                    switch outcome {
+                    case .becameSick(let index):
+                        let name = gameState.travelerName(for: index)
+                        messages.append("\(name) has fallen sick.")
+                    case .preventedByBlanket:
+                        messages.append("The group uses 1 Warm Blanket to stay warm.")
+                    }
                 }
             }
 

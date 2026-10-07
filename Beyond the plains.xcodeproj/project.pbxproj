@@ -43,6 +43,11 @@
 			path = "Beyond the plains";
 			sourceTree = "<group>";
 		};
+		0112C95C307649900017E877 /* Media */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Media;
+			sourceTree = "<group>";
+		};
 		0188522830725350000565DF /* BeyondThePlainsTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BeyondThePlainsTests;
@@ -67,6 +72,7 @@
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
+				0112C95C307649900017E877 /* Media */,
 				0127882F30725E6F00EAC0FD /* Beyond-the-plains-Info.plist */,
 				000000000000000000000010 /* Beyond the plains */,
 				0188522830725350000565DF /* BeyondThePlainsTests */,
@@ -98,6 +104,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				000000000000000000000010 /* Beyond the plains */,
+				0112C95C307649900017E877 /* Media */,
 			);
 			name = "Beyond the plains";
 			productName = MyApp;
