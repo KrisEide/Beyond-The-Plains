@@ -12,3 +12,21 @@ Beyond the Plains er et iOS-spill inspirert av klassikeren *The Oregon Trail*. S
 - Grafikk, lyd og musikkoverganger
 
 Dette er et hobby- og læringsprosjekt som er utviklet fra start til slutt som en komplett iOS-app.
+
+## Demo
+
+[▶ Se gameplay-videoen](Media/SmallDemo2BeyonThePlains.mov)
+
+## Bilder
+
+![Skjermbilde 1](Media/Bilde1.png)
+
+![Skjermbilde 2](Media/Bilde2.png)
+
+![Skjermbilde 3](Media/Bilde3.png)
+
+![Skjermbilde 4](Media/Bilde4.png)
+
+![Skjermbilde 5](Media/Bilde5.png)
+
+![Skjermbilde 6](Media/Bilde6.png)
