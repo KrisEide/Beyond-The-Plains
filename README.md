@@ -15,7 +15,7 @@ Dette er et hobby- og læringsprosjekt som er utviklet fra start til slutt som e
 
 ## Demo
 
-[▶ Se gameplay-videoen](Media/SmallDemo3BeyonThePlains.mov)
+[▶ Se gameplay-videoen](Media/SmallDemo2BeyonThePlains.mov)
 
 ## Bilder
 
